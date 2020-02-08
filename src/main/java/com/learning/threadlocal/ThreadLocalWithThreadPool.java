@@ -2,6 +2,7 @@ package com.learning.threadlocal;
 
 import java.text.SimpleDateFormat;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,7 +15,8 @@ public class ThreadLocalWithThreadPool {
     static Set<User> notUseThreadPool = new CopyOnWriteArraySet<>();
     static Set<User> useThreadLocal = new CopyOnWriteArraySet<>();
     static Set<User> notUseThreadLocal = new CopyOnWriteArraySet<>();
-    static ThreadLocal<User> threadLocal = ThreadLocal.withInitial(() -> new User());
+    static Set<User> userMap = new CopyOnWriteArraySet<>();
+    static ThreadLocal<User> threadLocal = ThreadLocal.withInitial(User::new);
     static ThreadLocal<SimpleDateFormat> threadLocal2 = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd"));
     static Set<SimpleDateFormat> useThreadPool2 = new CopyOnWriteArraySet<>();
 
@@ -57,9 +59,25 @@ public class ThreadLocalWithThreadPool {
         while (!executorService2.isTerminated()) {
         }
 
+        //simulate
+        ExecutorService executorService3 = Executors.newFixedThreadPool(10);
+        ConcurrentHashMap<Thread, User> userHolder = new ConcurrentHashMap<>();
+        for (int i = 0; i < 100; i++) {
+            executorService3.submit(() -> {
+                Thread thread = Thread.currentThread();
+                User user = userHolder.getOrDefault(thread, new User());
+                userHolder.putIfAbsent(thread, user);
+                userMap.add(user);
+            });
+        }
+        executorService3.shutdown();
+        while (!executorService3.isTerminated()) {
+        }
+
         System.out.println("every thread initiate one user and here is user's object total count:" + notUseThreadPool.size());
         System.out.println("not use thread local, here is user's object total count:" + notUseThreadLocal.size());
         System.out.println("only 10 threads in thread pool so threadLocal will have up to 10 users:" + useThreadLocal.size());
+        System.out.println("only 10 threads in thread pool so userMap will have up to 10 users:" + userMap.size());
         System.out.println(useThreadPool2.size()); // don't know the reason that there is only one object of SimpleDateFormat.
     }
 }
