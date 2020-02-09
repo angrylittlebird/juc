@@ -11,6 +11,12 @@ import java.util.concurrent.Executors;
  * 每个线程独享一个对象（如果是线程池，那么使用ThreadLocal可以很好的减少重复创建线程依赖的对象）
  */
 public class ThreadLocalDemo1 {
+//    static ThreadLocal<SimpleDateFormat> dateFormatThreadLocal = new ThreadLocal<SimpleDateFormat>() {
+//        @Override
+//        protected SimpleDateFormat initialValue() {
+//            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        }
+//    };
     static ThreadLocal<SimpleDateFormat> dateFormatThreadLocal = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 
     static Set<SimpleDateFormat> formatterSet = new CopyOnWriteArraySet<>();
