@@ -25,6 +25,9 @@ public class ThreadLocalDemo2 {
         User user = userHolder.get();
         //some code...
         System.out.println(user.name);
+
+        //Note: Remember to remove Entry which is not using in the future.
+        userHolder.remove();
     }
 
     public static void main(String[] args) {
