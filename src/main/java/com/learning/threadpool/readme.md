@@ -34,7 +34,7 @@ TERMINATED: terminated() has completed
 ---
 **线程复用的原理**
 ThreadPoolExecutor的内部类Worker实现了Runnable类，重写的run方法中是一个while循环，
-在循环的条件中判断队列中是否还可以得到新的任务，如果有就将新调用新任务的run方法。
+在循环的条件中判断队列中是否还可以得到新的任务，如果有就将调用新任务的run方法。
 
 ---
 **4中拒绝策略**
