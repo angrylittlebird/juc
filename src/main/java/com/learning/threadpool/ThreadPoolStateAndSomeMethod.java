@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @Description: 演示ThreadPool的几种常用方法
  * shutdown()，hutdownNow()，isShutdown(),awaitTermination(Time),isTerminated()
  */
-public class ThreadPoolState {
+public class ThreadPoolStateAndSomeMethod {
     @Test(expected = RejectedExecutionException.class)
     public void shutDown() {
         ExecutorService executorService = Executors.newFixedThreadPool(5);

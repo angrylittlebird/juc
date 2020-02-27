@@ -30,6 +30,7 @@ TERMINATED: terminated() has completed
 
 ---
 **线程池的钩子方法**： beforeExecute(),afterExecute(),在每个任务开始前后执行。
+[值得注意的是钩子方法中出现错误的话会导致线程退出。](HookMethodFailed.java)
 
 ---
 **线程复用的原理**
