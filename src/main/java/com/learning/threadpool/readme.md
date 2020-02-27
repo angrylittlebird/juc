@@ -4,7 +4,7 @@
 1. 继承关系：Executor<-ExecutorService<-AbstractExecutorService<-ThreadPoolExecutor
 2. 工具类：Executors
 
-![avatar](../../../../resources/ExecutorFamily.PNG)
+![ExecutorFamily](../../../../resources/ExecutorFamily.PNG)
 
 ---
 ##### 5 run state 

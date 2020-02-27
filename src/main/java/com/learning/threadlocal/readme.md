@@ -12,7 +12,7 @@
 3. 1. 在ThreadLocal中获取当前线程后，
    2. 再获取当前线程的成员变量ThreadLocalMap，
    3. 再把自己（this/ThreadLocal)当作key传入获取相应的副本。
-![avatar](../../../../resources/ThreadLocalMap.PNG)
+![get method](../../../../resources/ThreadLocalMap.PNG)
 4. get方法是懒加载: 第一次get时map为null，走的是setInitialValue方法
 
 ---
