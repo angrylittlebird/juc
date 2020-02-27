@@ -2,8 +2,8 @@
 
 ---
 ##### 2种使用场景
-1. 每个线程各自拥有一个副本
-2. 在同一线程中的调用链间传递数据
+1. 每个线程各自拥有一个[副本](ThreadLocalDemo1.java)
+2. 在同一线程中的[调用链](ThreadLocalDemo2.java)间传递数据
 
 ---
 ##### ThreadLocalMap

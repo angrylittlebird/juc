@@ -4,7 +4,7 @@
 1. 继承关系：Executor<-ExecutorService<-AbstractExecutorService<-ThreadPoolExecutor
 2. 工具类：Executors
 
-![avatar](../../../../resources/线程池类之间的关系图.PNG)
+![avatar](../../../../resources/ExecutorFamily.PNG)
 
 ---
 ##### 5 run state 
@@ -29,8 +29,8 @@ TERMINATED: terminated() has completed
 ```
 
 ---
-**线程池的钩子方法**： beforeExecute(),afterExecute(),在每个任务开始前后执行。
-[值得注意的是钩子方法中出现错误的话会导致线程退出。](HookMethodFailed.java)
+**线程池的钩子方法**： beforeExecute(),afterExecute(),在每个任务开始[前后](HookMethod.java)执行。
+值得注意的是钩子方法中出现错误的话会导致线程[退出](HookMethodFailed.java)。
 
 ---
 **线程复用的原理**
@@ -38,5 +38,5 @@ ThreadPoolExecutor的内部类Worker实现了Runnable类，重写的run方法中
 在循环的条件中判断队列中是否还可以得到新的任务，如果有就将调用新任务的run方法。
 
 ---
-**4中拒绝策略**
+**4中[拒绝策略](RejectPolicy.java)**
 AbortPolicy,DiscardPolicy,DiscardOldestPolicy,CallerRunsPolicy
