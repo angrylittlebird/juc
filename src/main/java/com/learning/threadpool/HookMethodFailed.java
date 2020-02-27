@@ -47,5 +47,7 @@ public class HookMethodFailed extends ThreadPoolExecutor {
         Thread.sleep(1000);
         int activeCount = hookMethod.getActiveCount();
         System.out.println(activeCount);// because the beforeExecute method throw Exception, the thread will exit automatically, and the active count is zero.
+
+        hookMethod.shutdown();
     }
 }
