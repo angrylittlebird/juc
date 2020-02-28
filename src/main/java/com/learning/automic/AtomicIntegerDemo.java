@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @Author: ZHANG
  * @Date: 2020/2/27
- * @Description:
+ * @Description: 演示AtomicInteger几个常见的方法
  */
 public class AtomicIntegerDemo {
     @Test
