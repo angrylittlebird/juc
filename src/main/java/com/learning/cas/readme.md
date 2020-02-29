@@ -48,7 +48,7 @@ class Unsafe:
 AtomicInteger中，通过**unsafe**对象获取**value**在内存中的偏移地址**valueOffset**后，
 再通过do-while循环+Unsafe.compareAndSwapInt方法（原子性的比较和替换值，最终还是要依赖cpu的原子性指令）,得到了乐观锁。
 
-
+---
 ##### III. 缺点
 1. ABA问题: 当其它线程将值A修改为B后又修改回B，其它线程会无法察觉。解决方案：使用版本号
 
