@@ -27,3 +27,15 @@
 
     a. CyclicBarrier基于线程计数，而CountDownLatch则是基于事件计数（由程序员手动调用countDown方法计数）；
     b. CyclicBarrier可以复用，CountDown不可复用。
+
+##### V. for debug    
+Thread State                        ---     Thread state shows in IDEA
+
+RUNNABLE                            ---     RUNNING
+WAITING|TIMED_WAITING               ---     WAIT
+BLOCKED                             ---     MONITOR
+TIMED_WAITING(Thread.sleep(time))   ---     SLEEPING
+TERMINATED                          ---     ZOMBIE
+    
+### 问题
+为什么JDK没有说线程进入WAITING状态还有以上这些工具类的方法？？？
