@@ -49,7 +49,9 @@ public class ConsumerProvider {
             while (!Thread.currentThread().isInterrupted()) {
                 lock.lock();
                 try {
-                    while (queue.size() > 5) { // Use WHILE instead of IF, cuz current task may already run by another threads and the queue size is full again.
+                    while (queue.size() > 5) {
+                        // prevent spurious wakeup
+                        // Use WHILE instead of IF, cuz current task may already run by another threads and the queue size is full again.
 //                    if (queue.size() > 5) {
                         try {
                             notFull.await();
