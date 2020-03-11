@@ -29,12 +29,16 @@
     b. CyclicBarrier可以复用，CountDown不可复用。
 
 ##### V. for debug    
-Thread State                        ---     Thread state shows in IDEA
+**Thread State**                        ---     **Thread state shows in IDEA**
 
 RUNNABLE                            ---     RUNNING
+
 WAITING|TIMED_WAITING               ---     WAIT
+
 BLOCKED                             ---     MONITOR
+
 TIMED_WAITING(Thread.sleep(time))   ---     SLEEPING
+
 TERMINATED                          ---     ZOMBIE
     
 ### 问题
